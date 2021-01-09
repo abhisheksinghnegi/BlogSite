@@ -14,7 +14,7 @@ var login = require("./Routes/logIn");
 var posts = require("./Routes/posts");
 var signin = require("./Routes/signIn");
 var signout = require("./Routes/signout");
-
+require("dotenv/config");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use("/", home);
@@ -28,7 +28,7 @@ app.use("/signout", signout);
 app.set("view engine", "ejs");
 
 mongoose.connect(
-  "mongodb+srv://abhi:abhi@cluster0.eyiho.mongodb.net/Blogdb?retryWrites=true&w=majority",
+  process.env.MyDb,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
