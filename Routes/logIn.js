@@ -3,6 +3,7 @@ const router = express.Router();
 const SharedContent = require("../Shared/SharedContent");
 const User = require("../Models/User");
 const Post = require("../Models/Post");
+const bcrypt = require("bcrypt");
 router.get("/", function (req, res) {
   res.render("logIn.ejs");
 });
@@ -10,8 +11,11 @@ router.post("/", async function (req, res) {
   try {
     const current = await User.find({ email: req.body.Email });
     if (current.length > 0) {
-      console.log(current[0].password + " - " + req.body.Password);
-      if (current[0].password == req.body.Password) {
+      const cryptPassword = await bcrypt.compare(
+        req.body.Password,
+        current[0].password
+      );
+      if (cryptPassword) {
         console.log("User Found and Authd");
         SharedContent.currentUser = current[0];
         SharedContent.currentUserposts = await Post.find({

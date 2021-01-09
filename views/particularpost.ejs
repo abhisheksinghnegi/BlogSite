@@ -4,7 +4,7 @@
     <%- include('partials/Loggedheader'); -%>
 <%}%>
 <div class="main_material">
-    <h2><%=post.postTitle%></h2><h6><%= post.date%></h6>
-    <pre><%=post.postContent%></pre>
+    <h2><%=post.postTitle%></h2><h6><small><%= post.date%></small></h6>
+    <pre class='formatContent'><%=post.postContent%></pre>
 </div>
 <%- include('partials/footer') -%>

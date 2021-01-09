@@ -4,7 +4,6 @@ const Post = require("../Models/Post");
 const User = require("../Models/User");
 const SharedContent = require("../Shared/SharedContent");
 router.get("/", function (req, res) {
-  console.log(SharedContent.currentUser);
   if (
     SharedContent.currentUser == null ||
     SharedContent.currentUserposts == null
