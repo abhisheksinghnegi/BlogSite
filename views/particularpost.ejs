@@ -1,0 +1,10 @@
+<%if(user == null){%>
+    <%- include('partials/header'); -%>
+<%}else{%>
+    <%- include('partials/Loggedheader'); -%>
+<%}%>
+<div class="main_material">
+    <h2><%=post.postTitle%></h2><h6><%= post.date%></h6>
+    <pre><%=post.postContent%></pre>
+</div>
+<%- include('partials/footer') -%>

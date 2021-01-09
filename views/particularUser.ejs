@@ -1,0 +1,22 @@
+
+    <%- include('partials/header'); -%>
+    <div class='main_material'>
+    <h1>Home</h1>
+    <p><%=start%></p>
+    <%if(user != null){%>
+        <a class="btn btn-dark composeBtn" href="/compose" role="button">Compose New Post</a>
+    <%}%>
+    <% for(var i = 0; i< allPosts.length ;i++){%>
+        <a href="/posts/<%=allPosts[i]._id%>" style="text-decoration: none;">
+        <div class="posts p-3 mb-2 btn-outline-dark">
+        <h2><%=allPosts[i].postTitle%></h2>
+        <%if(allPosts[i].postContent.length>200){%>
+        <p><%=allPosts[i].postContent.substring(0,200) + "..."%></p>
+        <%}else{%>
+            <p><%=allPosts[i].postContent%></p>
+        <%}%>
+        </div>
+        </a>
+    <%}%>
+    </div>
+    <%- include('partials/footer'); -%>
