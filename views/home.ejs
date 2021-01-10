@@ -5,7 +5,12 @@
 <%}%>
     <div class='main_material'>
     <div class="main_title"><h1>Home</h1></div>
-    <p><%=start%></p>
+    <%if(user == null){%>
+       <center><p><%=start%></p></center> 
+    <%}else{%>
+       <center><p>Welcome Back my Friend. How was your day?? Tell us All about it by making another Post.</p></center> 
+    <%}%>
+    
     <%if(user != null){%>
         <a class="btn btn-dark composeBtn" href="/compose" role="button">Compose New Post</a>
     <%}%>
@@ -21,5 +26,9 @@
         </div>
         </a>
     <%}%>
+    <%if(user == null){%>
+    <center><a href='/logIn' class="btn btn-dark">Log In</a></center>
+<%}%>
+    
     </div>
     <%- include('partials/footer'); -%>

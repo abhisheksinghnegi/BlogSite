@@ -5,7 +5,8 @@ const Posts = require("../Models/Post");
 const SharedContent = require("../Shared/SharedContent");
 const Post = require("../Models/Post");
 router.get("/", function (req, res) {
-  res.render("compose.ejs");
+  if (SharedContent.currentUser == null) res.redirect("/logIn");
+  else res.render("compose.ejs");
 });
 router.post("/", function (req, res) {
   if (SharedContent.currentUser == null)
