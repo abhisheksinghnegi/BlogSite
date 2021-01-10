@@ -11,6 +11,7 @@ router.post("/", async function (req, res) {
     console.log(hashedPassword);
     const newUser = new User({
       name: req.body.name,
+      about: req.body.aboutyou,
       email: req.body.Email,
       password: hashedPassword,
       userPosts: [],

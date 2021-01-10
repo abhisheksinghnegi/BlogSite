@@ -14,6 +14,8 @@ var login = require("./Routes/logIn");
 var posts = require("./Routes/posts");
 var signin = require("./Routes/signIn");
 var signout = require("./Routes/signout");
+const forgotPass = require("./Routes/forgotPass");
+
 require("dotenv/config");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
@@ -25,6 +27,8 @@ app.use("/logIn", login);
 app.use("/signIn", signin);
 app.use("/posts", posts);
 app.use("/signout", signout);
+app.use("/forgot", forgotPass);
+
 app.set("view engine", "ejs");
 
 mongoose.connect(
