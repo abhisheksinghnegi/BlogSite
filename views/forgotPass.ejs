@@ -1,0 +1,13 @@
+<%- include('partials/header')-%>
+
+<main class="form-signin" style="margin-top: 50px;">
+ 
+    <form action="/forgot" method="POST">
+      <label for="inputName" class="visually-hidden">email</label>
+      <br/>
+      <input type="email" id="inputEmai;" name='email' class="form-control" placeholder="Email" required autofocus>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Check</button>
+    </form>
+     <p style="text-align: center;"><%=message%></p>
+  </main>
+  <%- include('partials/footer')-%>

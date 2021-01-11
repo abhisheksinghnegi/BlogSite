@@ -5,7 +5,8 @@ const User = require("../Models/User");
 const Post = require("../Models/Post");
 const bcrypt = require("bcrypt");
 router.get("/", function (req, res) {
-  res.render("logIn.ejs");
+  if (SharedContent.currentUser == null) res.render("logIn.ejs");
+  else res.redirect("/");
 });
 router.post("/", async function (req, res) {
   try {

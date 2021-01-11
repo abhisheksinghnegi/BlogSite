@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require("../Models/User");
 const bcrypt = require("bcrypt");
+const SharedContent = require("../Shared/SharedContent");
 router.get("/", function (req, res) {
-  res.render("signIn.ejs");
+  if (SharedContent.currentUser == null) res.render("signIn.ejs");
+  else res.redirect("/");
 });
 router.post("/", async function (req, res) {
   try {

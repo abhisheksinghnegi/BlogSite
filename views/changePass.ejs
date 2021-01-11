@@ -1,0 +1,12 @@
+<%- include('partials/header')-%>
+<main class="form-signin" style="margin-top: 50px;">
+    <form action="/changePass" method="POST">
+      <label for="inputName" class="visually-hidden">New Password</label>
+      <br/>
+      <input type="number" id="inputPin" name='pin' class="form-control" placeholder="OTP" required autofocus>
+      <input type="text" id="inputText" name='newPass' class="form-control" placeholder="New Password" required autofocus>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Change</button>
+    </form>
+    <p style="text-align: center;"><%=message%></p>
+  </main>
+  <%- include('partials/footer')-%>

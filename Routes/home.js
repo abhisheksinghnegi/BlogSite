@@ -23,17 +23,20 @@ router.get("/", function (req, res) {
 });
 router.get("/user/:userId", async (req, res) => {
   try {
-    const guestId = req.params.userId;
-    const guestUser = await User.findById(guestId).exec();
-    console.log(guestUser);
-    SharedContent.currentUserposts = await Post.find({
-      _id: { $in: guestUser.userPosts },
-    });
-    res.render("particularUser.ejs", {
-      start: SharedContent.postStartingContent,
-      allPosts: SharedContent.currentUserposts,
-      user: null,
-    });
+    if (SharedContent.currentUser != null) res.redirect("/");
+    else {
+      const guestId = req.params.userId;
+      const guestUser = await User.findById(guestId).exec();
+      console.log(guestUser);
+      SharedContent.currentUserposts = await Post.find({
+        _id: { $in: guestUser.userPosts },
+      });
+      res.render("particularUser.ejs", {
+        start: SharedContent.postStartingContent,
+        allPosts: SharedContent.currentUserposts,
+        user: null,
+      });
+    }
   } catch (err) {
     console.log(err);
     res.redirect("/");

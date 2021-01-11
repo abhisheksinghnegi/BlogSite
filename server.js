@@ -15,6 +15,7 @@ var posts = require("./Routes/posts");
 var signin = require("./Routes/signIn");
 var signout = require("./Routes/signout");
 const forgotPass = require("./Routes/forgotPass");
+const changePass = require("./Routes/changePass");
 
 require("dotenv/config");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +29,7 @@ app.use("/signIn", signin);
 app.use("/posts", posts);
 app.use("/signout", signout);
 app.use("/forgot", forgotPass);
+app.use("/changePass", changePass);
 
 app.set("view engine", "ejs");
 
