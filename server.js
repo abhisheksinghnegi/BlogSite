@@ -5,7 +5,6 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 var _ = require("lodash");
-
 var about = require("./Routes/about");
 var compose = require("./Routes/Compose");
 var contact = require("./Routes/Contact");
@@ -16,8 +15,7 @@ var signin = require("./Routes/signIn");
 var signout = require("./Routes/signout");
 const forgotPass = require("./Routes/forgotPass");
 const changePass = require("./Routes/changePass");
-
-require("dotenv/config");
+require("dotenv").config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use("/", home);
