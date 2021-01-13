@@ -34,7 +34,7 @@ app.use("/changePass", changePass);
 app.set("view engine", "ejs");
 
 mongoose.connect(
-  "mongodb+srv://abhi:abhi@cluster0.eyiho.mongodb.net/Blogdb?retryWrites=true&w=majority",
+  process.env.MyDb,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
