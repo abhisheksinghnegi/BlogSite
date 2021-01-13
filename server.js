@@ -34,7 +34,7 @@ app.use("/changePass", changePass);
 app.set("view engine", "ejs");
 
 mongoose.connect(
-  process.env.MyDb,
+  "mongodb+srv://abhi:abhi@cluster0.eyiho.mongodb.net/Blogdb?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -45,6 +45,6 @@ mongoose.connect(
   }
 );
 
-app.listen(port, function () {
+app.listen(process.env.PORT || port, function () {
   console.log("listening into port 3000");
 });

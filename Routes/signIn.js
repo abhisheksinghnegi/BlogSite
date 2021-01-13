@@ -4,7 +4,8 @@ const User = require("../Models/User");
 const bcrypt = require("bcrypt");
 const SharedContent = require("../Shared/SharedContent");
 router.get("/", function (req, res) {
-  if (SharedContent.currentUser == null) res.render("signIn.ejs");
+  if (SharedContent.currentUser == null)
+    res.render("signIn.ejs", { message: null });
   else res.redirect("/");
 });
 router.post("/", async function (req, res) {
@@ -18,10 +19,16 @@ router.post("/", async function (req, res) {
       password: hashedPassword,
       userPosts: [],
     });
-    newUser.save().then(function () {
-      console.log("User Created");
-      res.redirect("/logIn");
-    });
+    const newman = await User.find({ email: req.body.Email });
+    if (newman.length > 0) {
+      console.log("User exists");
+      res.render("signIn.ejs", { message: "Email already exist" });
+    } else {
+      newUser.save().then(function () {
+        console.log("User Created");
+        res.redirect("/logIn");
+      });
+    }
   } catch (err) {
     console.log(err);
     res.render("signIn.ejs");

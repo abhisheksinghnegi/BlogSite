@@ -5,7 +5,8 @@ const User = require("../Models/User");
 const Post = require("../Models/Post");
 const bcrypt = require("bcrypt");
 router.get("/", function (req, res) {
-  if (SharedContent.currentUser == null) res.render("logIn.ejs");
+  if (SharedContent.currentUser == null)
+    res.render("logIn.ejs", { message: null });
   else res.redirect("/");
 });
 router.post("/", async function (req, res) {
@@ -26,11 +27,11 @@ router.post("/", async function (req, res) {
         res.redirect("/");
       } else {
         console.log("User Found but wrong password");
-        res.render("logIn.ejs");
+        res.render("logIn.ejs", { message: "User Found but wrong password" });
       }
     } else {
       console.log("no User Found");
-      res.render("logIn.ejs");
+      res.render("logIn.ejs", { message: "no User Found" });
     }
   } catch (err) {
     console.log(err);

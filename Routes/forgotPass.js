@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
     var mailOptions = {
       from: "abhisheksinghnegi5002@gmail.com",
       to: req.body.email,
-      subject: "Sending Email using Node.js",
+      subject: "Change your password",
       text: sendtext,
     };
     try {
